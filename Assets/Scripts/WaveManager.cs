@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -44,19 +43,26 @@ public class WaveManager : MonoBehaviour
     }
 #endif
 
-    void Update()
+    public static void StartNextWave()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnNextWave();
-        }
+        OnWaveStarted?.Invoke();
+    }
+
+    public static event Action OnWaveStarted;
+
+    void Awake()
+    {
+        OnWaveStarted += SpawnNextWave;
+    }
+
+    void OnDestroy()
+    {
+        OnWaveStarted -= SpawnNextWave;
     }
 
     void SpawnNextWave()
     {
         m_CurrentWave++;
-
-        Debug.Log($"Wave {m_CurrentWave}");
 
         StartCoroutine(SpawnWaveCoroutine(m_Waves[m_CurrentWave]));
     }
