@@ -168,19 +168,22 @@ public class Enemy : MonoBehaviour
                 _MatchLength = m_CurrentHealth;
             }
 
-            if (_MatchLength > m_PreviousMatchLength)
+            while (_MatchLength > m_PreviousMatchLength)
             {
                 float _Scale = m_Renderer.transform.localScale.x * m_FlinchFactor;
                 m_Renderer.transform.localScale = new Vector3(_Scale, _Scale, 1);
 
                 m_MatchingLetterColors.Add(0.0f);
-            }
-            else if (m_PreviousMatchLength > _MatchLength)
-            {
-                m_MatchingLetterColors.RemoveAt(_MatchLength);
+
+                m_PreviousMatchLength++;
             }
 
-            m_PreviousMatchLength = _MatchLength;
+            if (m_PreviousMatchLength > _MatchLength)
+            {
+                m_MatchingLetterColors.RemoveAt(_MatchLength);
+
+                m_PreviousMatchLength = _MatchLength;
+            }
 
             m_Text.sortingOrder = 101;
         }
