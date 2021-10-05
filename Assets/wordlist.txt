@@ -13191,6 +13191,7 @@ colonized
 colonizer
 colonnade
 colonnaded
+colonoscopy
 colony
 colophon
 colophony
@@ -16265,6 +16266,7 @@ cyrillic
 cyrtomium
 cyst
 cysteine
+cystectomy
 cystic
 cystine
 cystitis
@@ -28899,6 +28901,7 @@ henry
 hep
 hepadnavirus
 heparin
+hepatectomy
 hepatic
 hepatica
 hepaticopsida
@@ -34852,6 +34855,7 @@ laryngectomy
 laryngitis
 laryngopharynx
 laryngoscope
+laryngoscopy
 larynx
 las
 lasagna
@@ -39480,6 +39484,7 @@ mitigable
 mitigate
 mitigated
 mitigation
+mitochondria
 mitochondrion
 mitosis
 mitra
@@ -52248,6 +52253,7 @@ rhinoceros
 rhinocerotidae
 rhinolophidae
 rhinonicteris
+rhinoplasty
 rhinoptera
 rhinotermitidae
 rhinotillexomania
