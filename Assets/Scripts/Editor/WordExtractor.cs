@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 public class WordExtractor : EditorWindow
 {
-    [SerializeField] WordList m_WordList;
-    [SerializeField] string m_TextFilePath = "words_alpha.txt";
+    //[SerializeField] WordList m_WordList;
+    //[SerializeField] string m_TextFilePath = "wordlist.txt";
 
     //[MenuItem("Window/Word Extractor")]
     //static void Init()
