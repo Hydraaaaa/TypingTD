@@ -1431,6 +1431,8 @@ afghan
 afghani
 afghanistan
 afibrinogenemia
+aficionado
+aficionados
 afield
 afire
 aflak
@@ -4454,6 +4456,7 @@ articular
 articulate
 articulated
 articulately
+articulating
 articulation
 articulatory
 articulo
@@ -6064,6 +6067,7 @@ barghest
 bari
 baric
 barilla
+barista
 baritone
 barium
 bark
@@ -6234,6 +6238,9 @@ bassetto
 bassia
 bassine
 bassinet
+bassinets
+bassist
+bassists
 basso
 bassoon
 bassoonist
@@ -7636,6 +7643,7 @@ blindness
 blinds
 blindworm
 blini
+bling
 blink
 blinkard
 blinker
@@ -21676,6 +21684,7 @@ episode
 episodic
 episodically
 epispadias
+epistaxis
 epistemic
 epistemologist
 epistemology
@@ -24857,6 +24866,7 @@ formulary
 formulate
 formulated
 formulation
+fornicate
 fornication
 fornicator
 fornicatress
@@ -42392,6 +42402,7 @@ oats
 oaxaca
 ob
 obbligato
+obdormition
 obduction
 obduracy
 obdurate
@@ -46207,6 +46218,7 @@ phosphoric
 phosphorous
 phosphorus
 phot
+photalgia
 photic
 photinia
 photo
@@ -46240,6 +46252,7 @@ photometry
 photomicrograph
 photomontage
 photon
+photophobia
 photosensitivity
 photosphere
 photostat
@@ -51928,6 +51941,9 @@ restrictively
 restrictiveness
 restringency
 restringent
+restructure
+restructured
+restructuring
 resty
 resublimed
 result
@@ -52234,6 +52250,7 @@ rhinolophidae
 rhinonicteris
 rhinoptera
 rhinotermitidae
+rhinotillexomania
 rhinotracheitis
 rhipidate
 rhipsalis
@@ -55251,6 +55268,7 @@ serrulate
 sertularia
 sertularian
 serum
+serums
 serval
 servans
 servant
@@ -58579,6 +58597,7 @@ sternocleidomastoid
 sternotherus
 sternpost
 sternum
+sternutate
 sternutation
 sternutative
 sternutator
@@ -65484,7 +65503,10 @@ unobscured
 unobservable
 unobservant
 unobserved
+unobstruct
 unobstructed
+unobstructing
+unobstructor
 unobtainable
 unobtained
 unobtrusive
@@ -66466,6 +66488,7 @@ uvular
 uvularia
 uvulariaceae
 uvulitis
+uvulopalatopharyngoplasty
 uxor
 uxoricide
 uxorious
@@ -69175,6 +69198,7 @@ xerography
 xerophagy
 xerophyllum
 xerophytic
+xerosis
 xerox
 xhosa
 xi
