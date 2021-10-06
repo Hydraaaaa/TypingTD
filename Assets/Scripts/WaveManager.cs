@@ -6,6 +6,7 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     public event Action<int> OnWaveStarted;
+    public event Action OnWaveEnded;
 
     public bool IsWaveActive { get; private set; }
 
@@ -23,6 +24,11 @@ public class WaveManager : MonoBehaviour
         if (IsWaveActive)
         {
             IsWaveActive = IsWaveStillActive();
+
+            if (!IsWaveActive)
+            {
+                OnWaveEnded?.Invoke();
+            }
         }
     }
 

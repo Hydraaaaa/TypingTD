@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static List<Enemy> Enemies { get; private set; }
+
+    public event System.Action OnDestinationReached;
+    public event System.Action OnDeath;
+
+    public Transform Offset => m_Offset;
+
     [SerializeField] WordList m_WordList;
     [SerializeField] TextMeshPro m_Text;
     [SerializeField] SpriteRenderer m_Renderer;
@@ -23,11 +30,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float m_FlinchFactor = 0.8f;
     [SerializeField] float m_FlinchRecoveryRate = 2.0f;
     [SerializeField] float m_TextTransitionSpeed = 2.0f;
-
-    public static List<Enemy> Enemies { get; private set; }
-
-    public event System.Action OnDestinationReached;
-    public event System.Action OnDeath;
 
     public int Health
     {
