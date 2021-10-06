@@ -9,42 +9,36 @@ public class TypingBox : MonoBehaviour
     public static event Action<string> OnWordUpdate;
     public static event Action<string> OnWordSubmission;
 
-    [SerializeField] TMP_InputField m_InputField;
+    [SerializeField] TextMeshProUGUI m_Text;
 
     void Awake()
     {
-        OnDeselected();
+        m_Text.text = "";
     }
 
     void Update()
     {
-        if (m_InputField.isFocused)
+        foreach (char c in Input.inputString)
         {
-            m_InputField.caretPosition = m_InputField.text.Length;
-            m_InputField.text = m_InputField.text.ToLower();
+            if (c == '\b')
+            {
+                if (m_Text.text.Length > 0)
+                {
+                    m_Text.text = m_Text.text.Remove(m_Text.text.Length - 1);
+                }
+            }
+            else if (c == ' ' ||
+                     c == '\n')
+            {
+                OnWordSubmission?.Invoke(m_Text.text);
+                m_Text.text = "";
+            }
+            else
+            {
+                m_Text.text += c;
+            }
+
+            OnWordUpdate?.Invoke(m_Text.text);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
-        {
-            OnSubmitted();
-
-            m_InputField.text = "";
-        }
-    }
-
-    public void OnValueChanged()
-    {
-        OnWordUpdate?.Invoke(m_InputField.text);
-    }
-
-    void OnSubmitted()
-    {
-        OnWordSubmission?.Invoke(m_InputField.text);
-    }
-
-    public void OnDeselected()
-    {
-        m_InputField.Select();
-        m_InputField.ActivateInputField();
     }
 }

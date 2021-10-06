@@ -1,113 +1,73 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] Waypoint[] m_Waypoints;
-    [SerializeField] Wave[] m_Waves;
+    public event Action<int> OnWaveStarted;
+
+    public bool IsWaveActive { get; private set; }
 
     int m_CurrentWave = -1;
 
-#if UNITY_EDITOR
-    void OnDrawGizmosSelected()
-    {
-        GUIStyle _Style = new GUIStyle();
-
-        _Style.alignment = TextAnchor.UpperCenter;
-        _Style.fontSize = 20;
-
-        Gizmos.color = Color.yellow;
-
-        Handles.Label(transform.position + new Vector3(0, 0.5f, 0), "Spawn", _Style);
-
-        Gizmos.DrawSphere(transform.position, 0.1f);
-
-        Vector3 _WaypointPos = transform.position;
-        Vector3 _PreviousWaypointPos;
-
-        for (int i = 0; i < m_Waypoints.Length; i++)
-        {
-            if (m_Waypoints[i].AreEnemiesTargetable)
-            {
-                Gizmos.color = Color.yellow;
-            }
-            else
-            {
-                Gizmos.color = Color.black;
-            }
-
-            _PreviousWaypointPos = _WaypointPos;
-            _WaypointPos = new Vector3(m_Waypoints[i].Position.x, m_Waypoints[i].Position.y, transform.position.z);
-
-            Handles.Label(_WaypointPos + new Vector3(0, 0.5f, 0), $"{i}", _Style);
-
-            Gizmos.DrawSphere(_WaypointPos, 0.1f);
-            Gizmos.DrawLine(_PreviousWaypointPos, _WaypointPos);
-        }
-    }
-#endif
-
-    public static void StartNextWave()
-    {
-        OnWaveStarted?.Invoke();
-    }
-
-    public static event Action OnWaveStarted;
+    List<EnemySpawner> m_EnemySpawners = new List<EnemySpawner>();
 
     void Awake()
     {
-        OnWaveStarted += SpawnNextWave;
+        IsWaveActive = false;
     }
 
-    void OnDestroy()
+    void Update()
     {
-        OnWaveStarted -= SpawnNextWave;
-    }
-
-    void SpawnNextWave()
-    {
-        m_CurrentWave++;
-
-        StartCoroutine(SpawnWaveCoroutine(m_Waves[m_CurrentWave]));
-    }
-
-    IEnumerator SpawnWaveCoroutine(Wave a_Wave)
-    {
-        for (int i = 0; i < a_Wave.EnemyGroups.Length; i++)
+        if (IsWaveActive)
         {
-            yield return new WaitForSeconds(a_Wave.EnemyGroups[i].SpawnDelay);
-
-            for (int j = 0; j < a_Wave.EnemyGroups[i].Amount; j++)
-            {
-                Enemy _Enemy = Instantiate(a_Wave.EnemyGroups[i].Enemy, transform.position, Quaternion.identity);
-
-                _Enemy.Initialize(m_Waypoints);
-
-                if (j != a_Wave.EnemyGroups[i].Amount - 1)
-                {
-                    yield return new WaitForSeconds(a_Wave.EnemyGroups[i].SpawnInterval);
-                }
-            }
+            IsWaveActive = IsWaveStillActive();
         }
     }
 
-    [Serializable]
-    public class Wave
+    bool IsWaveStillActive()
     {
-        public EnemyGroup[] EnemyGroups;
+        if (Enemy.Enemies != null &&
+            Enemy.Enemies.Count > 0)
+        {
+            return true;
+        }
+
+        for (int i = 0; i < m_EnemySpawners.Count; i++)
+        {
+            if (m_EnemySpawners[i].IsSpawning)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
-    [Serializable]
-    public class EnemyGroup
+    public void RegisterEnemySpawner(EnemySpawner a_EnemySpawner)
     {
-        public Enemy Enemy;
-        public int Amount;
-        public float SpawnInterval; // Time between spawns within this group
-        public float SpawnDelay; // Time before this group starts spawning
+        m_EnemySpawners.Add(a_EnemySpawner);
+    }
+
+    public void UnregisterEnemySpawner(EnemySpawner a_EnemySpawner)
+    {
+        m_EnemySpawners.Remove(a_EnemySpawner);
+    }
+
+    public void StartNextWave()
+    {
+        if (!IsWaveActive)
+        {
+            m_CurrentWave++;
+            IsWaveActive = true;
+
+            for (int i = 0; i < m_EnemySpawners.Count; i++)
+            {
+                m_EnemySpawners[i].SpawnWave(m_CurrentWave);
+            }
+
+            OnWaveStarted?.Invoke(m_CurrentWave);
+        }
     }
 }
