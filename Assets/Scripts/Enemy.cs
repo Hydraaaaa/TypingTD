@@ -296,7 +296,7 @@ public class Enemy : MonoBehaviour
     {
         OnDeath?.Invoke();
 
-        Instantiate(m_DeathEffect, transform.position, Quaternion.identity);
+        Instantiate(m_DeathEffect, m_Offset.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
