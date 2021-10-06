@@ -30,8 +30,8 @@ public class AutoCamera : MonoBehaviour
 
                 for (int i = 0; i < _Enemies.Count; i++)
                 {
-                    if (Mathf.Abs(_Enemies[i].Offset.position.x) > m_MapWidth ||
-                        Mathf.Abs(_Enemies[i].Offset.position.y) > m_MapHeight)
+                    if (Mathf.Abs(_Enemies[i].OffsetTransform.position.x) > m_MapWidth ||
+                        Mathf.Abs(_Enemies[i].OffsetTransform.position.y) > m_MapHeight)
                     {
                         continue;
                     }
@@ -39,33 +39,33 @@ public class AutoCamera : MonoBehaviour
                     // Need to get base values for the extents of enemies, use the first enemy in the loop and trigger this bool
                     if (!_InitialValueSet)
                     {
-                        _MinX = _Enemies[i].Offset.position.x;
-                        _MaxX = _Enemies[i].Offset.position.x;
-                        _MinY = _Enemies[i].Offset.position.y;
-                        _MaxY = _Enemies[i].Offset.position.y;
+                        _MinX = _Enemies[i].OffsetTransform.position.x;
+                        _MaxX = _Enemies[i].OffsetTransform.position.x;
+                        _MinY = _Enemies[i].OffsetTransform.position.y;
+                        _MaxY = _Enemies[i].OffsetTransform.position.y;
 
                         _InitialValueSet = true;
                     }
                     else
                     {
-                        if (_Enemies[i].Offset.position.x < _MinX)
+                        if (_Enemies[i].OffsetTransform.position.x < _MinX)
                         {
-                            _MinX = _Enemies[i].Offset.position.x;
+                            _MinX = _Enemies[i].OffsetTransform.position.x;
                         }
 
-                        if (_Enemies[i].Offset.position.x > _MaxX)
+                        if (_Enemies[i].OffsetTransform.position.x > _MaxX)
                         {
-                            _MaxX = _Enemies[i].Offset.position.x;
+                            _MaxX = _Enemies[i].OffsetTransform.position.x;
                         }
 
-                        if (_Enemies[i].Offset.position.y < _MinY)
+                        if (_Enemies[i].OffsetTransform.position.y < _MinY)
                         {
-                            _MinY = _Enemies[i].Offset.position.y;
+                            _MinY = _Enemies[i].OffsetTransform.position.y;
                         }
 
-                        if (_Enemies[i].Offset.position.y > _MaxY)
+                        if (_Enemies[i].OffsetTransform.position.y > _MaxY)
                         {
-                            _MaxY = _Enemies[i].Offset.position.y;
+                            _MaxY = _Enemies[i].OffsetTransform.position.y;
                         }
                     }
                 }

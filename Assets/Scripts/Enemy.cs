@@ -9,13 +9,14 @@ public class Enemy : MonoBehaviour
     public event System.Action OnDestinationReached;
     public event System.Action OnDeath;
 
-    public Transform Offset => m_Offset;
+    public Transform OffsetTransform => m_OffsetTransform;
 
     [SerializeField] WordList m_WordList;
     [SerializeField] TextMeshPro m_Text;
     [SerializeField] SpriteRenderer m_Renderer;
     [SerializeField] GameObject m_DeathEffect;
-    [SerializeField] Transform m_Offset;
+    [SerializeField] Transform m_OffsetTransform;
+    [SerializeField] BoxCollider2D m_OffsetCollider;
 
     [Space]
 
@@ -30,6 +31,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float m_FlinchFactor = 0.8f;
     [SerializeField] float m_FlinchRecoveryRate = 2.0f;
     [SerializeField] float m_TextTransitionSpeed = 2.0f;
+    [SerializeField] float m_SpacingForce = 0.25f;
+    [SerializeField] LayerMask m_SpacingLayerMask;
 
     public int Health
     {
@@ -54,7 +57,10 @@ public class Enemy : MonoBehaviour
 
     Waypoint[] m_Waypoints;
 
-    Vector3 m_MovementDirection;
+    Vector2 m_CurrentPosition;
+    Vector2 m_MovementDirection;
+
+    Vector2 m_OffsetPosition;
 
     int m_CurrentWaypoint;
 
@@ -68,6 +74,13 @@ public class Enemy : MonoBehaviour
 
     List<float> m_MatchingLetterColors = new List<float>();
     List<float> m_MissingLetterColors = new List<float>();
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawSphere(m_CurrentPosition + m_OffsetPosition, 0.12f);
+    }
 
     void Awake()
     {
@@ -96,7 +109,8 @@ public class Enemy : MonoBehaviour
 
         m_CurrentWaypoint = 0;
 
-        m_MovementDirection = (new Vector3(a_Waypoints[0].Position.x, a_Waypoints[0].Position.y, transform.position.z) - transform.position).normalized;
+        m_CurrentPosition = transform.position;
+        m_MovementDirection = (new Vector2(a_Waypoints[0].Position.x, a_Waypoints[0].Position.y) - m_CurrentPosition).normalized;
 
         m_IsMoving = true;
 
@@ -107,7 +121,10 @@ public class Enemy : MonoBehaviour
 
         m_PreviousMatchLength = 0;
 
-        m_Offset.localPosition = Random.insideUnitCircle;
+        m_OffsetPosition = Random.insideUnitCircle * 0.75f;
+        m_OffsetTransform.localPosition = m_OffsetPosition;
+
+        m_OffsetCollider.size = new Vector2(m_Text.preferredWidth, m_Text.preferredHeight);
     }
 
     void Update()
@@ -115,13 +132,33 @@ public class Enemy : MonoBehaviour
         if (m_IsMoving)
         {
             Move();
+
+            // Move the visual element
+            Collider2D[] _Colliders = Physics2D.OverlapBoxAll(m_OffsetTransform.position, m_OffsetCollider.size, 0, m_SpacingLayerMask);
+
+            Vector3 _Spacing = Vector3.zero;
+
+            for (int i = 0; i < _Colliders.Length; i++)
+            {
+                _Spacing += (m_OffsetTransform.position - _Colliders[i].transform.position).normalized * m_SpacingForce;
+            }
+
+            Vector2 _Direction = new Vector2
+            (
+                m_CurrentPosition.x + m_OffsetPosition.x - m_OffsetTransform.position.x + _Spacing.x,
+                m_CurrentPosition.y + m_OffsetPosition.y - m_OffsetTransform.position.y + _Spacing.y
+            );
+
+            _Direction *= Time.deltaTime * 5;
+
+            m_OffsetTransform.position += new Vector3(_Direction.x, _Direction.y, 0);
         }
 
-        if (m_Offset.localScale.x < 1)
+        if (m_OffsetTransform.localScale.x < 1)
         {
-            float _Scale = Mathf.Clamp01(m_Offset.localScale.x + Time.deltaTime * m_FlinchRecoveryRate);
+            float _Scale = Mathf.Clamp01(m_OffsetTransform.localScale.x + Time.deltaTime * m_FlinchRecoveryRate);
 
-            m_Offset.localScale = new Vector3(_Scale, _Scale, 1);
+            m_OffsetTransform.localScale = new Vector3(_Scale, _Scale, 1);
         }
 
         for (int i = 0; i < m_MatchingLetterColors.Count; i++)
@@ -140,14 +177,14 @@ public class Enemy : MonoBehaviour
     void Move()
     {
         float _FrameMovement = m_MovementSpeed * Time.deltaTime;
-        float _DistanceToWaypoint = Vector2.Distance(transform.position, m_Waypoints[m_CurrentWaypoint].Position);
+        float _DistanceToWaypoint = Vector2.Distance(m_CurrentPosition, m_Waypoints[m_CurrentWaypoint].Position);
 
         // If the travel distance would allow the enemy to reach the waypoint
         while (_FrameMovement >= _DistanceToWaypoint)
         {
             _FrameMovement -= _DistanceToWaypoint;
 
-            transform.position = m_Waypoints[m_CurrentWaypoint].Position;
+            m_CurrentPosition = m_Waypoints[m_CurrentWaypoint].Position;
 
             m_CurrentWaypoint++;
 
@@ -160,12 +197,12 @@ public class Enemy : MonoBehaviour
                 return;
             }
 
-            _DistanceToWaypoint = Vector2.Distance(transform.position, m_Waypoints[m_CurrentWaypoint].Position);
+            _DistanceToWaypoint = Vector2.Distance(m_CurrentPosition, m_Waypoints[m_CurrentWaypoint].Position);
 
-            m_MovementDirection = (new Vector3(m_Waypoints[m_CurrentWaypoint].Position.x, m_Waypoints[m_CurrentWaypoint].Position.y, transform.position.z) - transform.position).normalized;
+            m_MovementDirection = (new Vector2(m_Waypoints[m_CurrentWaypoint].Position.x, m_Waypoints[m_CurrentWaypoint].Position.y) - m_CurrentPosition).normalized;
         }
 
-        transform.position += m_MovementDirection * _FrameMovement;
+        m_CurrentPosition += m_MovementDirection * _FrameMovement;
     }
 
     void DestinationReached()
@@ -201,8 +238,8 @@ public class Enemy : MonoBehaviour
 
             while (_MatchLength > m_PreviousMatchLength)
             {
-                float _Scale = m_Offset.localScale.x * m_FlinchFactor;
-                m_Offset.localScale = new Vector3(_Scale, _Scale, 1);
+                float _Scale = m_OffsetTransform.localScale.x * m_FlinchFactor;
+                m_OffsetTransform.localScale = new Vector3(_Scale, _Scale, 1);
 
                 m_MatchingLetterColors.Add(0.0f);
 
@@ -296,7 +333,7 @@ public class Enemy : MonoBehaviour
     {
         OnDeath?.Invoke();
 
-        Instantiate(m_DeathEffect, m_Offset.position, Quaternion.identity);
+        Instantiate(m_DeathEffect, m_OffsetTransform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

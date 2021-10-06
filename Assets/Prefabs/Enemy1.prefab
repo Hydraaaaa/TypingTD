@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5477227310470954760}
-  m_Layer: 0
+  - component: {fileID: 2919052054851322258}
+  m_Layer: 3
   m_Name: Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +33,32 @@ Transform:
   m_Father: {fileID: 8104407351349939674}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2919052054851322258
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453021039427427792}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &703947510227825864
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +200,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -213,7 +240,7 @@ GameObject:
   - component: {fileID: 8104407351349939674}
   - component: {fileID: -6418481162810762875}
   m_Layer: 0
-  m_Name: BasicEnemy
+  m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +277,8 @@ MonoBehaviour:
   m_Text: {fileID: 5946282112723923767}
   m_Renderer: {fileID: 7112420918281613325}
   m_DeathEffect: {fileID: 4809564492503763598, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
-  m_Offset: {fileID: 5477227310470954760}
+  m_OffsetTransform: {fileID: 5477227310470954760}
+  m_OffsetCollider: {fileID: 2919052054851322258}
   m_MatchingTextImpactGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -338,11 +366,15 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  m_MovementSpeed: 1.5
-  m_Health: 6
+  m_MovementSpeed: 3
+  m_Health: 1
   m_FlinchFactor: 0.8
   m_FlinchRecoveryRate: 2
   m_TextTransitionSpeed: 4
+  m_SpacingForce: 0.3
+  m_SpacingLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &5880585888607933324
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +401,7 @@ Transform:
   m_GameObject: {fileID: 5880585888607933324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 5477227310470954760}
   m_RootOrder: 0
@@ -415,7 +447,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
