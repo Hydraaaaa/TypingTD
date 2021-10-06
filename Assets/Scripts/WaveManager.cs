@@ -8,7 +8,7 @@ using UnityEditor;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] Vector2[] m_Waypoints;
+    [SerializeField] Waypoint[] m_Waypoints;
     [SerializeField] Wave[] m_Waves;
 
     int m_CurrentWave = -1;
@@ -32,8 +32,17 @@ public class WaveManager : MonoBehaviour
 
         for (int i = 0; i < m_Waypoints.Length; i++)
         {
+            if (m_Waypoints[i].AreEnemiesTargetable)
+            {
+                Gizmos.color = Color.yellow;
+            }
+            else
+            {
+                Gizmos.color = Color.black;
+            }
+
             _PreviousWaypointPos = _WaypointPos;
-            _WaypointPos = new Vector3(m_Waypoints[i].x, m_Waypoints[i].y, transform.position.z);
+            _WaypointPos = new Vector3(m_Waypoints[i].Position.x, m_Waypoints[i].Position.y, transform.position.z);
 
             Handles.Label(_WaypointPos + new Vector3(0, 0.5f, 0), $"{i}", _Style);
 

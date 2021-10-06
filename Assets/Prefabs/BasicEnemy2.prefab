@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Health
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_DeathEffect
@@ -31,9 +31,29 @@ PrefabInstance:
       propertyPath: m_MovementSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
+      propertyPath: m_MissingTextImpactGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
+      propertyPath: m_MissingTextImpactGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4315577481526888582, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Name
       value: BasicEnemy2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.49803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8104407351349939674, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_RootOrder
