@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3113136864610311302
+--- !u!1001 &475132932638936156
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,55 +9,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Health
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_DeathEffect
       value: 
-      objectReference: {fileID: 3014202530676026780, guid: 6157fd1fcb17d44428b9f64744e3baa9, type: 3}
+      objectReference: {fileID: 2218592609856668351, guid: d37fbae4720694e498baf5886b659d47, type: 3}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_SpacingForce
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_MovementSpeed
-      value: 1.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2919052054851322258, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      propertyPath: m_Size.x
-      value: 2.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 2919052054851322258, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      propertyPath: m_Size.y
-      value: 0.9
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4315577481526888582, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Name
-      value: Enemy8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477227310470954760, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.601895
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477227310470954760, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.0391555
-      objectReference: {fileID: 0}
-    - target: {fileID: 5946282112723923767, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      propertyPath: m_text
-      value: pint-size
-      objectReference: {fileID: 0}
-    - target: {fileID: 5946282112723923767, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      propertyPath: _SortingOrder
-      value: 100
+      value: Enemy9
       objectReference: {fileID: 0}
     - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Color.b
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      propertyPath: m_Color.g
-      value: 0.49803922
       objectReference: {fileID: 0}
     - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Color.r
@@ -109,15 +81,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202100179779719002, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.85
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 9202100179779719002, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.85
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 9202100179779719002, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.85
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}

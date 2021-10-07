@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5114238328703335990
+--- !u!1001 &802392669664555678
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,32 +8,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.49803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.g
-      value: 0.49803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      propertyPath: InitialModule.startColor.maxColor.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key1.g
-      value: 0.49803922
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3322717324877028091, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4809564492503763598, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
       propertyPath: m_Name
-      value: EnemyDeath2
+      value: EnemyDeath7
       objectReference: {fileID: 0}
     - target: {fileID: 6716121589437516154, guid: 06ad299a256959f4d9d14ad5529fe0a2, type: 3}
       propertyPath: m_RootOrder
