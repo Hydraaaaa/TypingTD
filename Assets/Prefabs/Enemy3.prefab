@@ -12,6 +12,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
+      propertyPath: m_DeathEffect
+      value: 
+      objectReference: {fileID: 860060828257614482, guid: b12038c6ee4a3f144b79df62a93fc723, type: 3}
+    - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_SpacingForce
       value: 1.4
       objectReference: {fileID: 0}
@@ -25,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Color.b
-      value: 0.49803922
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7112420918281613325, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_Color.g
