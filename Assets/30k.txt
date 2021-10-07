@@ -29446,7 +29446,6 @@ hrt
 palazzo
 franciscan
 heparin
-universiteit
 figurative
 gait
 hardcopy
@@ -29641,7 +29640,6 @@ predicates
 bcl
 unfit
 uttered
-douay
 rumanian
 zeitgeist
 nickelodeon
@@ -29712,7 +29710,6 @@ freedman
 migraines
 wallingford
 newborns
-ljubljana
 restarted
 rnc
 reprise
@@ -29821,7 +29818,6 @@ nucleotides
 mmv
 ebi
 reginald
-wierd
 sbd
 pasted
 moths
@@ -29841,7 +29837,6 @@ haywood
 staunton
 boz
 accelerators
-howstuffworks
 nit
 amorphous
 neighbourhoods
@@ -29876,7 +29871,6 @@ archaic
 elevate
 deafness
 footballs
-emailemail
 bathurst
 bec
 sala
@@ -29928,7 +29922,6 @@ affleck
 kettles
 ascend
 flinders
-informationhide
 hearst
 verifies
 reverb
@@ -29936,7 +29929,6 @@ kays
 commuters
 rcp
 nutmeg
-welivetogether
 crit
 sdm
 durbin
@@ -29971,10 +29963,8 @@ gnl
 vegetative
 acdbvertex
 agora
-illini
 macho
 sob
-ningbo
 elaborated
 reeve
 embellishments
@@ -29989,7 +29979,6 @@ foss
 gfp
 macpherson
 overheard
-yhoo
 sloane
 wooster
 delong
@@ -29998,3 +29987,15 @@ mdi
 nilsson
 whereabouts
 substring
+alienate
+stim
+worsen
+ablaze
+abstractionism
+crystallization
+cumin
+horticultural
+inept
+inflationary
+inflexible
+laborious
