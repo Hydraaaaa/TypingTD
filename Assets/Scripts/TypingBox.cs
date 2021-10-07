@@ -28,7 +28,8 @@ public class TypingBox : MonoBehaviour
                 }
             }
             else if (c == ' ' ||
-                     c == '\n')
+                     c == '\n' ||
+                     c == '\r')
             {
                 OnWordSubmission?.Invoke(m_Text.text);
                 m_Text.text = "";
