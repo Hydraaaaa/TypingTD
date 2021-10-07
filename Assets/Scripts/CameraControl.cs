@@ -32,20 +32,24 @@ public class CameraControl : MonoBehaviour
             {
                 Vector3 _Position = transform.position;
 
-                if (Input.mousePosition.x <= 2)
+                if (Input.mousePosition.x <= 2 ||
+                    Input.GetKey(KeyCode.LeftArrow))
                 {
                     _Position.x -= Time.deltaTime * m_ScrollSpeed;
                 }
-                else if (Input.mousePosition.x >= Screen.width - 3)
+                else if (Input.mousePosition.x >= Screen.width - 3 ||
+                         Input.GetKey(KeyCode.RightArrow))
                 {
                     _Position.x += Time.deltaTime * m_ScrollSpeed;
                 }
 
-                if (Input.mousePosition.y <= 2)
+                if (Input.mousePosition.y <= 2 ||
+                    Input.GetKey(KeyCode.DownArrow))
                 {
                     _Position.y -= Time.deltaTime * m_ScrollSpeed;
                 }
-                else if (Input.mousePosition.y >= Screen.height - 3)
+                else if (Input.mousePosition.y >= Screen.height - 3 ||
+                         Input.GetKey(KeyCode.UpArrow))
                 {
                     _Position.y += Time.deltaTime * m_ScrollSpeed;
                 }
