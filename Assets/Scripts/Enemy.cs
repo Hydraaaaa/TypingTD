@@ -306,10 +306,7 @@ public class Enemy : MonoBehaviour
 
     void SetHealth(int a_Health)
     {
-        if (a_Health < 0)
-        {
-            a_Health = 0;
-        }
+        a_Health = Mathf.Clamp(a_Health, 0, m_Health);
 
         while (m_CurrentHealth > a_Health)
         {
