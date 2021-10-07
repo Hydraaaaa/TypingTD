@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     public Transform OffsetTransform => m_OffsetTransform;
 
+    public Vector2 Position => m_CurrentPosition;
+
     public string Word { get; private set; }
 
     public int Health
