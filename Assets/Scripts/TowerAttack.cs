@@ -15,11 +15,12 @@ public class TowerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            Debug.Log("y");
             for (int i = 0; i < Enemy.Enemies.Count; i++)
             {
-                Enemy.Enemies[i].Health -= 2;
+                Debug.Log(Vector3.Distance(transform.position, Enemy.Enemies[i].transform.position));
+                Enemy.Enemies[i].Health -= 1;
             }
+            //so for every enemy that reaches within the specified distance attack it for 1 damage (hi hydra)
         }
     }
 }
