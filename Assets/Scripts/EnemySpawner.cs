@@ -74,7 +74,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < a_Wave.EnemyGroups.Length; i++)
         {
-            yield return new WaitForSeconds(a_Wave.EnemyGroups[i].SpawnDelay);
+            yield return new WaitForSeconds(a_Wave.EnemyGroups[i].InitialDelay);
 
             for (int j = 0; j < a_Wave.EnemyGroups[i].Amount; j++)
             {
@@ -101,9 +101,11 @@ public class EnemySpawner : MonoBehaviour
     [Serializable]
     public class EnemyGroup
     {
+        [Tooltip("Time before this group starts spawning")]
+        public float InitialDelay;
         public Enemy Enemy;
         public int Amount;
-        public float SpawnInterval; // Time between spawns within this group
-        public float SpawnDelay; // Time before this group starts spawning
+        [Tooltip("Time between spawns within this group")]
+        public float SpawnInterval;
     }
 }

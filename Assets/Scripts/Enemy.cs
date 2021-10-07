@@ -11,28 +11,7 @@ public class Enemy : MonoBehaviour
 
     public Transform OffsetTransform => m_OffsetTransform;
 
-    [SerializeField] WordList m_WordList;
-    [SerializeField] TextMeshPro m_Text;
-    [SerializeField] SpriteRenderer m_Renderer;
-    [SerializeField] GameObject m_DeathEffect;
-    [SerializeField] Transform m_OffsetTransform;
-    [SerializeField] BoxCollider2D m_OffsetCollider;
-
-    [Space]
-
-    [SerializeField] Gradient m_MatchingTextImpactGradient;
-    [SerializeField] Gradient m_CompletelyMatchingTextImpactGradient;
-    [SerializeField] Gradient m_MissingTextImpactGradient;
-
-    [Space]
-
-    [SerializeField] float m_MovementSpeed = 1.0f;
-    [SerializeField] int m_Health = 5;
-    [SerializeField] float m_FlinchFactor = 0.8f;
-    [SerializeField] float m_FlinchRecoveryRate = 2.0f;
-    [SerializeField] float m_TextTransitionSpeed = 2.0f;
-    [SerializeField] float m_SpacingForce = 0.25f;
-    [SerializeField] LayerMask m_SpacingLayerMask;
+    public string Word { get; private set; }
 
     public int Health
     {
@@ -55,6 +34,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    [SerializeField] WordList m_WordList;
+    [SerializeField] TextMeshPro m_Text;
+    [SerializeField] SpriteRenderer m_Renderer;
+    [SerializeField] GameObject m_DeathEffect;
+    [SerializeField] Transform m_OffsetTransform;
+    [SerializeField] BoxCollider2D m_OffsetCollider;
+
+    [Space]
+
+    [SerializeField] Gradient m_MatchingTextImpactGradient;
+    [SerializeField] Gradient m_CompletelyMatchingTextImpactGradient;
+    [SerializeField] Gradient m_MissingTextImpactGradient;
+
+    [Space]
+
+    [SerializeField] float m_MovementSpeed = 1.0f;
+    [SerializeField] int m_Health = 5;
+    [SerializeField] float m_FlinchFactor = 0.8f;
+    [SerializeField] float m_FlinchRecoveryRate = 2.0f;
+    [SerializeField] float m_TextTransitionSpeed = 2.0f;
+    [SerializeField] float m_MovementStrictness = 5.0f;
+    [SerializeField] float m_SpacingForce = 0.25f;
+    [SerializeField] LayerMask m_SpacingLayerMask;
+
     Waypoint[] m_Waypoints;
 
     Vector2 m_CurrentPosition;
@@ -70,17 +73,8 @@ public class Enemy : MonoBehaviour
 
     bool m_IsMoving;
 
-    public string Word { get; private set; }
-
     List<float> m_MatchingLetterColors = new List<float>();
     List<float> m_MissingLetterColors = new List<float>();
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawSphere(m_CurrentPosition + m_OffsetPosition, 0.12f);
-    }
 
     void Awake()
     {
@@ -134,26 +128,33 @@ public class Enemy : MonoBehaviour
             Move();
 
             // Move the visual element
+
+            // See if our word is overlapping any other words
             Collider2D[] _Colliders = Physics2D.OverlapBoxAll(m_OffsetTransform.position, m_OffsetCollider.size, 0, m_SpacingLayerMask);
 
             Vector3 _Spacing = Vector3.zero;
 
+            // For each overlapped word, push us away from the origin point of the other enemy
             for (int i = 0; i < _Colliders.Length; i++)
             {
                 _Spacing += (m_OffsetTransform.position - _Colliders[i].transform.position).normalized * m_SpacingForce;
             }
 
+            // Combine follow point with spacing direction
+            // Since the follow point direction isn't normalized, if we're far away enough, the follow force will overpower the spacing force
             Vector2 _Direction = new Vector2
             (
-                m_CurrentPosition.x + m_OffsetPosition.x - m_OffsetTransform.position.x + _Spacing.x,
-                m_CurrentPosition.y + m_OffsetPosition.y - m_OffsetTransform.position.y + _Spacing.y
+                (m_CurrentPosition.x + m_OffsetPosition.x - m_OffsetTransform.position.x) * m_MovementStrictness + _Spacing.x,
+                (m_CurrentPosition.y + m_OffsetPosition.y - m_OffsetTransform.position.y) * m_MovementStrictness + _Spacing.y
             );
 
-            _Direction *= Time.deltaTime * 5;
+            // Scale combined movement with deltaTime
+            _Direction *= Time.deltaTime;
 
             m_OffsetTransform.position += new Vector3(_Direction.x, _Direction.y, 0);
         }
 
+        // localScale will be below one if the enemy has flinched from matching keyboard input
         if (m_OffsetTransform.localScale.x < 1)
         {
             float _Scale = Mathf.Clamp01(m_OffsetTransform.localScale.x + Time.deltaTime * m_FlinchRecoveryRate);
@@ -161,6 +162,7 @@ public class Enemy : MonoBehaviour
             m_OffsetTransform.localScale = new Vector3(_Scale, _Scale, 1);
         }
 
+        // Mature any red letters into either yellow or green
         for (int i = 0; i < m_MatchingLetterColors.Count; i++)
         {
             m_MatchingLetterColors[i] = Mathf.Clamp01(m_MatchingLetterColors[i] + Time.deltaTime * m_TextTransitionSpeed);
@@ -179,9 +181,10 @@ public class Enemy : MonoBehaviour
         float _FrameMovement = m_MovementSpeed * Time.deltaTime;
         float _DistanceToWaypoint = Vector2.Distance(m_CurrentPosition, m_Waypoints[m_CurrentWaypoint].Position);
 
-        // If the travel distance would allow the enemy to reach the waypoint
+        // While the travel distance would allow the enemy to reach the waypoint
         while (_FrameMovement >= _DistanceToWaypoint)
         {
+            // Subtract the remaining waypoint distance from the frame movement
             _FrameMovement -= _DistanceToWaypoint;
 
             m_CurrentPosition = m_Waypoints[m_CurrentWaypoint].Position;
@@ -221,6 +224,8 @@ public class Enemy : MonoBehaviour
 
     void OnWordUpdate(string a_Word)
     {
+        // If our word begins with the keyboard input
+        // Or the keyboard input begins with our entire word
         if (Word.StartsWith(a_Word) &&
             a_Word.Length > 0 ||
             a_Word.StartsWith(Word.Substring(0, m_CurrentHealth)))
