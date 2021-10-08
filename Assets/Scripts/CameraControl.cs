@@ -7,6 +7,8 @@ public class CameraControl : MonoBehaviour
     [SerializeField] Camera m_Camera;
     [SerializeField] WaveManager m_WaveManager;
     [SerializeField] float m_ScrollSpeed = 1.0f;
+    [SerializeField] float m_MinZoom = 2.0f;
+    [SerializeField] float m_MaxZoom = 30.0f;
 
     bool m_Active;
 
@@ -20,7 +22,7 @@ public class CameraControl : MonoBehaviour
 
         if (!m_WaveManager.IsWaveActive)
         {
-            m_Camera.orthographicSize -= Input.mouseScrollDelta.y;
+            m_Camera.orthographicSize = Mathf.Clamp(m_Camera.orthographicSize - Input.mouseScrollDelta.y, m_MinZoom, m_MaxZoom);
 
             if (Input.GetMouseButtonDown(0))
             {
