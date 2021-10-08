@@ -9,8 +9,6 @@ public class Enemy : MonoBehaviour
     public event System.Action OnDestinationReached;
     public event System.Action OnDeath;
 
-    public Transform OffsetTransform => m_OffsetTransform;
-
     public Vector2 Position => m_CurrentPosition;
 
     public string Word { get; private set; }
@@ -40,8 +38,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] TextMeshPro m_Text;
     [SerializeField] SpriteRenderer m_Renderer;
     [SerializeField] GameObject m_DeathEffect;
-    [SerializeField] Transform m_OffsetTransform;
-    [SerializeField] BoxCollider2D m_OffsetCollider;
+    [SerializeField] BoxCollider2D m_WordCollider;
 
     [Space]
 
@@ -118,9 +115,10 @@ public class Enemy : MonoBehaviour
         m_PreviousMatchLength = 0;
 
         m_OffsetPosition = Random.insideUnitCircle * 0.75f;
-        m_OffsetTransform.localPosition = m_OffsetPosition;
 
-        m_OffsetCollider.size = new Vector2(m_Text.preferredWidth, m_Text.preferredHeight);
+        transform.position += new Vector3(m_OffsetPosition.x, m_OffsetPosition.y);
+
+        m_WordCollider.size = new Vector2(m_Text.preferredWidth, m_Text.preferredHeight);
     }
 
     void Update()
@@ -132,36 +130,36 @@ public class Enemy : MonoBehaviour
             // Move the visual element
 
             // See if our word is overlapping any other words
-            Collider2D[] _Colliders = Physics2D.OverlapBoxAll(m_OffsetTransform.position, m_OffsetCollider.size, 0, m_SpacingLayerMask);
+            Collider2D[] _Colliders = Physics2D.OverlapBoxAll(transform.position, m_WordCollider.size, 0, m_SpacingLayerMask);
 
             Vector3 _Spacing = Vector3.zero;
 
             // For each overlapped word, push us away from the origin point of the other enemy
             for (int i = 0; i < _Colliders.Length; i++)
             {
-                _Spacing += (m_OffsetTransform.position - _Colliders[i].transform.position).normalized * m_SpacingForce;
+                _Spacing += (transform.position - _Colliders[i].transform.position).normalized * m_SpacingForce;
             }
 
             // Combine follow point with spacing direction
             // Since the follow point direction isn't normalized, if we're far away enough, the follow force will overpower the spacing force
             Vector2 _Direction = new Vector2
             (
-                (m_CurrentPosition.x + m_OffsetPosition.x - m_OffsetTransform.position.x) * m_MovementStrictness + _Spacing.x,
-                (m_CurrentPosition.y + m_OffsetPosition.y - m_OffsetTransform.position.y) * m_MovementStrictness + _Spacing.y
+                (m_CurrentPosition.x + m_OffsetPosition.x - transform.position.x) * m_MovementStrictness + _Spacing.x,
+                (m_CurrentPosition.y + m_OffsetPosition.y - transform.position.y) * m_MovementStrictness + _Spacing.y
             );
 
             // Scale combined movement with deltaTime
             _Direction *= Time.deltaTime;
 
-            m_OffsetTransform.position += new Vector3(_Direction.x, _Direction.y, 0);
+            transform.position += new Vector3(_Direction.x, _Direction.y, 0);
         }
 
         // localScale will be below one if the enemy has flinched from matching keyboard input
-        if (m_OffsetTransform.localScale.x < 1)
+        if (transform.localScale.x < 1)
         {
-            float _Scale = Mathf.Clamp01(m_OffsetTransform.localScale.x + Time.deltaTime * m_FlinchRecoveryRate);
+            float _Scale = Mathf.Clamp01(transform.localScale.x + Time.deltaTime * m_FlinchRecoveryRate);
 
-            m_OffsetTransform.localScale = new Vector3(_Scale, _Scale, 1);
+            transform.localScale = new Vector3(_Scale, _Scale, 1);
         }
 
         // Mature any red letters into either yellow or green
@@ -245,8 +243,8 @@ public class Enemy : MonoBehaviour
 
             while (_MatchLength > m_PreviousMatchLength)
             {
-                float _Scale = m_OffsetTransform.localScale.x * m_FlinchFactor;
-                m_OffsetTransform.localScale = new Vector3(_Scale, _Scale, 1);
+                float _Scale = transform.localScale.x * m_FlinchFactor;
+                transform.localScale = new Vector3(_Scale, _Scale, 1);
 
                 m_MatchingLetterColors.Add(0.0f);
 
@@ -337,7 +335,7 @@ public class Enemy : MonoBehaviour
     {
         OnDeath?.Invoke();
 
-        Instantiate(m_DeathEffect, m_OffsetTransform.position, Quaternion.identity);
+        Instantiate(m_DeathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
