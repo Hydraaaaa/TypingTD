@@ -41,36 +41,43 @@ public class AutoCamera : MonoBehaviour
                     // Need to get base values for the extents of enemies, use the first enemy in the loop and trigger this bool
                     if (!_InitialValueSet)
                     {
-                        _MinX = _Enemies[i].transform.position.x;
-                        _MaxX = _Enemies[i].transform.position.x;
-                        _MinY = _Enemies[i].transform.position.y;
-                        _MaxY = _Enemies[i].transform.position.y;
+                        _MinX = _Enemies[i].transform.position.x - _Enemies[i].WordWidth / 2;
+                        _MaxX = _Enemies[i].transform.position.x + _Enemies[i].WordWidth / 2;
+                        _MinY = _Enemies[i].transform.position.y - _Enemies[i].WordHeight / 2;
+                        _MaxY = _Enemies[i].transform.position.y + _Enemies[i].WordHeight / 2;
 
                         _InitialValueSet = true;
                     }
                     else
                     {
-                        if (_Enemies[i].transform.position.x < _MinX)
+                        if (_Enemies[i].transform.position.x - _Enemies[i].WordWidth / 2 < _MinX)
                         {
-                            _MinX = _Enemies[i].transform.position.x;
+                            _MinX = _Enemies[i].transform.position.x - _Enemies[i].WordWidth / 2;
                         }
 
-                        if (_Enemies[i].transform.position.x > _MaxX)
+                        if (_Enemies[i].transform.position.x + _Enemies[i].WordWidth / 2 > _MaxX)
                         {
-                            _MaxX = _Enemies[i].transform.position.x;
+                            _MaxX = _Enemies[i].transform.position.x + _Enemies[i].WordWidth / 2;
                         }
 
-                        if (_Enemies[i].transform.position.y < _MinY)
+                        if (_Enemies[i].transform.position.y - _Enemies[i].WordHeight / 2 < _MinY)
                         {
-                            _MinY = _Enemies[i].transform.position.y;
+                            _MinY = _Enemies[i].transform.position.y - _Enemies[i].WordHeight / 2;
                         }
 
-                        if (_Enemies[i].transform.position.y > _MaxY)
+                        if (_Enemies[i].transform.position.y + _Enemies[i].WordHeight / 2 > _MaxY)
                         {
-                            _MaxY = _Enemies[i].transform.position.y;
+                            _MaxY = _Enemies[i].transform.position.y + _Enemies[i].WordHeight / 2;
                         }
                     }
                 }
+
+                // Even though an enemy won't be counted if it's not inside the map bounds
+                // The offset of text can push the min/max values outside the map bounds
+                _MinX = Mathf.Clamp(_MinX, -m_MapWidth, m_MapWidth);
+                _MaxX = Mathf.Clamp(_MaxX, -m_MapWidth, m_MapWidth);
+                _MinY = Mathf.Clamp(_MinY, -m_MapHeight, m_MapHeight);
+                _MaxY = Mathf.Clamp(_MaxY, -m_MapHeight, m_MapHeight);
 
                 // If there are any enemies to follow
                 // Can conveniently reuse this bool which happens to align with our criteria

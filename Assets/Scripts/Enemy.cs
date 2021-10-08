@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public event System.Action OnDeath;
 
     public Vector2 Position => m_CurrentPosition;
+    public float WordWidth { get { return m_Text.preferredWidth; } }
+    public float WordHeight { get { return m_Text.preferredHeight; } }
 
     public string Word { get; private set; }
 
