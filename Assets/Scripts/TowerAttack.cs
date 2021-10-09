@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TowerAttack : MonoBehaviour
 {
+    [SerializeField] float fireRate;
+    private float time = 0f;
+    public bool towerPlaced = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,14 +16,27 @@ public class TowerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            for (int i = 0; i < Enemy.Enemies.Count; i++)
+            towerPlaced = true;
+        }
+        else if (towerPlaced == true)
+        {
+            time += Time.deltaTime;
+            if (time > fireRate)
             {
-                Debug.Log(Vector3.Distance(transform.position, Enemy.Enemies[i].Position));
-                Enemy.Enemies[i].Health -= 1;
+                if (Enemy.Enemies != null)
+                {
+                    for (int i = 0; i < Enemy.Enemies.Count; i++)
+                    {
+                        if (Vector3.Distance(transform.position, Enemy.Enemies[i].Position) < 3)
+                        {
+                            Enemy.Enemies[i].Health -= 1;
+                        }
+                    }
+                }
+                time -= fireRate;
             }
-            //so for every enemy that reaches within the specified distance attack it for 1 damage (hi hydra)
         }
     }
 }

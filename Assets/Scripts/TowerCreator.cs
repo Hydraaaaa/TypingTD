@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerCreator : MonoBehaviour
 {
     GameObject clone;
-    bool beenClicked = false;
+    public bool beenClicked = false;
     [SerializeField] GameObject tower;
     [SerializeField] Camera mainCamera;
     void Start()
