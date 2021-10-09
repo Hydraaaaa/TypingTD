@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Gradient m_MatchingTextImpactGradient;
     [SerializeField] Gradient m_CompletelyMatchingTextImpactGradient;
     [SerializeField] Gradient m_MissingTextImpactGradient;
+    [SerializeField] Color m_ImportantTextColor;
 
     [Space]
 
@@ -291,7 +292,14 @@ public class Enemy : MonoBehaviour
                 _Text += $"<color=#{ColorUtility.ToHtmlStringRGB(m_MatchingTextImpactGradient.Evaluate(m_MatchingLetterColors[i]))}>{Word[i]}</color>";
             }
 
-            _Text += Word.Substring(m_PreviousMatchLength, m_CurrentHealth - m_PreviousMatchLength);
+            if (m_MatchingLetterColors.Count > 0)
+            {
+                _Text += $"<color=#{ColorUtility.ToHtmlStringRGB(m_ImportantTextColor)}>{Word.Substring(m_PreviousMatchLength, m_CurrentHealth - m_PreviousMatchLength)}</color>";
+            }
+            else
+            {
+                _Text += Word.Substring(m_PreviousMatchLength, m_CurrentHealth - m_PreviousMatchLength);
+            }
         }
 
         for (int i = 0; i < m_MissingLetterColors.Count; i++)

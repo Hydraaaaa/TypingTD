@@ -334,6 +334,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  m_ImportantTextColor: {r: 0.62352943, g: 1, b: 1, a: 1}
   m_MovementSpeed: 3
   m_Health: 1
   m_FlinchFactor: 0.8
