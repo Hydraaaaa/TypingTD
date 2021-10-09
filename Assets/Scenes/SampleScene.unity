@@ -963,39 +963,53 @@ MonoBehaviour:
     - InitialDelay: 0
       Enemy: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       Amount: 10
-      SpawnInterval: 0.4
-    - InitialDelay: 3
+      SpawnInterval: 0.3
+    - InitialDelay: 1
       Enemy: {fileID: 7939833986821652190, guid: 980cfd47e1fa90f4dbff0ac22d09dfea, type: 3}
       Amount: 10
-      SpawnInterval: 0.4
-    - InitialDelay: 3
+      SpawnInterval: 0.35
+    - InitialDelay: 2
       Enemy: {fileID: 228347645261173720, guid: ea54d60a04c57e747bbdc3d1ba090a1a, type: 3}
       Amount: 10
       SpawnInterval: 0.4
     - InitialDelay: 3
       Enemy: {fileID: 5483437661262518699, guid: a507cf2eeec1a6645b5a92ff1f198f56, type: 3}
       Amount: 10
-      SpawnInterval: 0.4
+      SpawnInterval: 0.45
     - InitialDelay: 3
       Enemy: {fileID: 383645278999364118, guid: 17b34cc0a7923c74a9206d99a8d9bd53, type: 3}
       Amount: 10
       SpawnInterval: 0.5
+  - EnemyGroups:
     - InitialDelay: 3
       Enemy: {fileID: 4968557573891087867, guid: 1ea3604a867f45143aa393a33a99b9ea, type: 3}
       Amount: 10
-      SpawnInterval: 0.5
+      SpawnInterval: 0.55
     - InitialDelay: 3
       Enemy: {fileID: 5050763585163224290, guid: a15f6ef3316e624408b422437a9c9c55, type: 3}
-      Amount: 12
-      SpawnInterval: 0.5
+      Amount: 10
+      SpawnInterval: 0.6
     - InitialDelay: 3
       Enemy: {fileID: 997806907121304835, guid: c0aea99103ce11e41be349f8dee44a97, type: 3}
       Amount: 10
-      SpawnInterval: 0.5
+      SpawnInterval: 0.65
     - InitialDelay: 3
       Enemy: {fileID: 2338770638286116313, guid: 1ce5d5ae652b32f439b79d2343edbdd8, type: 3}
       Amount: 10
-      SpawnInterval: 0.5
+      SpawnInterval: 0.7
+    - InitialDelay: 3
+      Enemy: {fileID: 7004150419978751773, guid: 9f8fb50d577ae794e9d280ee127fd654, type: 3}
+      Amount: 10
+      SpawnInterval: 0.75
+  - EnemyGroups:
+    - InitialDelay: 3
+      Enemy: {fileID: 3656454494943571501, guid: 1c1684ec8a747de4ca4ecfb2aca39427, type: 3}
+      Amount: 15
+      SpawnInterval: 0.8
+    - InitialDelay: 3
+      Enemy: {fileID: 3656454494943571501, guid: e008758a1e40d704d92c26682127ead8, type: 3}
+      Amount: 15
+      SpawnInterval: 0.85
 --- !u!4 &1126878999
 Transform:
   m_ObjectHideFlags: 0

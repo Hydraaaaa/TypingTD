@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 4298220680958964665, guid: 2e0af2fad70c7c849b77fb9b25f3d714, type: 3}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_SpacingForce
-      value: 1.2
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
       propertyPath: m_MovementSpeed
