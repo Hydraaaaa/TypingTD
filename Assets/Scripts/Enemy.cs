@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public static List<Enemy> Enemies { get; private set; }
 
     public event System.Action OnDestinationReached;
-    public event System.Action OnDeath;
+    public event System.Action<Enemy> OnDeath;
 
     public Vector2 Position => m_CurrentPosition;
     public float WordWidth { get { return m_Text.preferredWidth; } }
@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public int KillReward => m_KillReward;
+
     [SerializeField] WordList m_WordList;
     [SerializeField] TextMeshPro m_Text;
     [SerializeField] SpriteRenderer m_Renderer;
@@ -53,6 +55,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float m_MovementSpeed = 1.0f;
     [SerializeField] int m_Health = 5;
+    [SerializeField] int m_KillReward = 1;
     [SerializeField] float m_FlinchFactor = 0.8f;
     [SerializeField] float m_FlinchRecoveryRate = 2.0f;
     [SerializeField] float m_TextTransitionSpeed = 2.0f;
@@ -343,7 +346,7 @@ public class Enemy : MonoBehaviour
 
     void Kill()
     {
-        OnDeath?.Invoke();
+        OnDeath?.Invoke(this);
 
         Instantiate(m_DeathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);

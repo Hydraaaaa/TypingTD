@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
 
     public bool IsSpawning { get; private set; }
 
+    public event Action<Enemy> OnEnemySpawned;
+
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
@@ -81,6 +83,8 @@ public class EnemySpawner : MonoBehaviour
                 Enemy _Enemy = Instantiate(a_Wave.EnemyGroups[i].Enemy, transform.position, Quaternion.identity);
 
                 _Enemy.Initialize(m_Waypoints);
+
+                OnEnemySpawned(_Enemy);
 
                 if (j != a_Wave.EnemyGroups[i].Amount - 1)
                 {

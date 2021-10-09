@@ -1,22 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerCreator : MonoBehaviour
 {
-    GameObject clone;
     public bool beenClicked = false;
-    [SerializeField] GameObject tower;
-    [SerializeField] Camera mainCamera;
-    void Start()
+
+    public int CurrentMoney
     {
-        
+        get { return currentMoney; }
+        set
+        {
+            currentMoney = value;
+            moneyText.text = value.ToString();
+        }
     }
 
-    public void MakeCube()
+
+    [SerializeField] GameObject tower;
+    [SerializeField] Camera mainCamera;
+    [SerializeField] WaveManager waveManager;
+    [SerializeField] Text moneyText;
+
+    [Space]
+
+    [SerializeField] int startingMoney = 10;
+    [SerializeField] int towerCost = 10;
+
+    GameObject clone;
+
+    int currentMoney;
+
+    void Start()
     {
-        beenClicked = true;
-        clone = Instantiate(tower, transform.position, Quaternion.identity);
+        CurrentMoney = startingMoney;
+
+        moneyText.text = CurrentMoney.ToString();
+
+        for (int i = 0; i < waveManager.EnemySpawners.Count; i++)
+        {
+            waveManager.EnemySpawners[i].OnEnemySpawned += OnEnemySpawned;
+        }
     }
 
     void Update()
@@ -32,5 +57,26 @@ public class TowerCreator : MonoBehaviour
                 beenClicked = false;
             }
         }
+    }
+
+    public void MakeTower()
+    {
+        if (CurrentMoney >= towerCost)
+        {
+            beenClicked = true;
+            clone = Instantiate(tower, transform.position, Quaternion.identity);
+
+            CurrentMoney -= towerCost;
+        }
+    }
+
+    void OnEnemySpawned(Enemy a_Enemy)
+    {
+        a_Enemy.OnDeath += OnEnemyDeath;
+    }
+
+    void OnEnemyDeath(Enemy a_Enemy)
+    {
+        CurrentMoney += a_Enemy.KillReward;
     }
 }

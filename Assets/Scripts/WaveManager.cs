@@ -10,9 +10,15 @@ public class WaveManager : MonoBehaviour
 
     public bool IsWaveActive { get; private set; }
 
-    int m_CurrentWave = -1;
+    public List<EnemySpawner> EnemySpawners => m_EnemySpawners;
 
     List<EnemySpawner> m_EnemySpawners = new List<EnemySpawner>();
+
+    int m_CurrentWave = -1;
+
+    [SerializeField] TowerCreator m_TowerCreator;
+
+    [SerializeField] int[] m_WavePayments;
 
     void Awake()
     {
@@ -27,6 +33,7 @@ public class WaveManager : MonoBehaviour
 
             if (!IsWaveActive)
             {
+                m_TowerCreator.CurrentMoney += m_WavePayments[m_CurrentWave];
                 OnWaveEnded?.Invoke();
             }
         }
