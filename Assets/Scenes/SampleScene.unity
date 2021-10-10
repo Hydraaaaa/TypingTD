@@ -547,7 +547,7 @@ MonoBehaviour:
   m_WaveManager: {fileID: 1076288477}
   m_MinZoom: 6
   m_ViewPadding: 1.5
-  m_MapWidth: 16.5
+  m_MapWidth: 16
   m_MapHeight: 9
   m_TrackSpeed: 1.75
 --- !u!1 &572947966
@@ -941,25 +941,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WaveManager: {fileID: 1076288477}
   m_Waypoints:
-  - Position: {x: -16.5, y: 6}
+  - Position: {x: -16, y: 6}
     AreEnemiesTargetable: 0
-  - Position: {x: 9.5, y: 6}
+  - Position: {x: 9, y: 6}
     AreEnemiesTargetable: 1
-  - Position: {x: 9.5, y: 2}
+  - Position: {x: 9, y: 2}
     AreEnemiesTargetable: 1
-  - Position: {x: -8.5, y: 2}
+  - Position: {x: -9, y: 2}
     AreEnemiesTargetable: 1
-  - Position: {x: -8.5, y: -2}
+  - Position: {x: -9, y: -2}
     AreEnemiesTargetable: 1
-  - Position: {x: 5.5, y: -4}
+  - Position: {x: 5, y: -4}
     AreEnemiesTargetable: 1
-  - Position: {x: 5.5, y: -6}
+  - Position: {x: 5, y: -6}
     AreEnemiesTargetable: 1
-  - Position: {x: -4.5, y: -6}
+  - Position: {x: -5, y: -6}
     AreEnemiesTargetable: 1
-  - Position: {x: -4.5, y: -9}
+  - Position: {x: -5, y: -9}
     AreEnemiesTargetable: 1
-  - Position: {x: -4.5, y: -11}
+  - Position: {x: -5, y: -11}
     AreEnemiesTargetable: 0
   m_Waves:
   - EnemyGroups:

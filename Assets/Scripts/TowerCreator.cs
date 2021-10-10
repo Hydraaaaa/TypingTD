@@ -50,6 +50,14 @@ public class TowerCreator : MonoBehaviour
         {
             Vector3 mousePositionInPixels = Input.mousePosition;
             Vector3 mousePositionInWorld = mainCamera.ScreenToWorldPoint(mousePositionInPixels);
+
+            mousePositionInWorld = new Vector3
+            (
+                Mathf.Round(mousePositionInWorld.x),
+                Mathf.Round(mousePositionInWorld.y),
+                mousePositionInWorld.z
+            );
+
             Vector3 clonePosition = new Vector3(mousePositionInWorld.x, mousePositionInWorld.y);
             clone.transform.position = clonePosition;
             if (Input.GetKeyDown(KeyCode.Mouse0))
