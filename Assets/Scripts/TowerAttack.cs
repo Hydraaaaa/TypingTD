@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TowerAttack : MonoBehaviour
 {
+    [SerializeField] int range;
     [SerializeField] float fireRate;
     private float time = 0f;
     public bool towerPlaced = false;
@@ -29,7 +30,7 @@ public class TowerAttack : MonoBehaviour
                 {
                     for (int i = 0; i < Enemy.Enemies.Count; i++)
                     {
-                        if (Vector3.Distance(transform.position, Enemy.Enemies[i].Position) < 3)
+                        if (Vector3.Distance(transform.position, Enemy.Enemies[i].Position) < range)
                         {
                             Enemy.Enemies[i].Health -= 1;
                         }

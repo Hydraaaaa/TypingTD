@@ -100,4 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41360122c16811c45aa56ccea04f13b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 3
   fireRate: 1
+  towerPlaced: 0
