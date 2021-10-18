@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41360122c16811c45aa56ccea04f13b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerPlaced: 0
   range: 3
   fireRate: 1
-  towerPlaced: 0
+  shotEffect: {fileID: 7622810732044849116, guid: 6a1e33efdaf56df4ba89a5b57ff42f58, type: 3}
