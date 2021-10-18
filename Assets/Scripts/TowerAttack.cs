@@ -9,6 +9,7 @@ public class TowerAttack : MonoBehaviour
     [SerializeField] int range;
     [SerializeField] float fireRate;
     [SerializeField] GameObject shotEffect;
+    [SerializeField] int damage;
 
     private float time = 0f;
 
@@ -47,7 +48,7 @@ public class TowerAttack : MonoBehaviour
                     if (_ClosestDistance < range)
                     {
                         Destroy (Instantiate(shotEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0))), 3f);
-                        _ClosestEnemy.Health -= 1;
+                        _ClosestEnemy.Health -= damage;
                     }
                 }
                 time -= fireRate;
