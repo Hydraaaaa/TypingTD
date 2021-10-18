@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tower Particle Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 00d441c600ac20849a6722bec33579c9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 11e8b0602beb06e48ab38edabefee3dc, type: 3}
+  - {fileID: 21300000, guid: 079f95b0b76055b47b76a9ecf945c49e, type: 3}
+  - {fileID: 21300000, guid: fccc9741970fded45b19cad6699e4aeb, type: 3}
+  - {fileID: 21300000, guid: 39fd43c2f841676428ab3140e9801c43, type: 3}
+  - {fileID: 21300000, guid: 5a77ff0464a38a0429f4f4680807edde, type: 3}
+  - {fileID: 21300000, guid: da79a344a78e1504087a9144a599f2f6, type: 3}
+  - {fileID: 21300000, guid: f1e6b0e4260f81f48a90ffafc89cac57, type: 3}
+  - {fileID: 21300000, guid: b20725b5c6d562c468d26f69afbd98b7, type: 3}
+  - {fileID: 21300000, guid: 2f023b86cf76410479f89a51aa66ae14, type: 3}
+  - {fileID: 21300000, guid: 79a804d6eceb5e24ba2591417a65eb23, type: 3}
+  - {fileID: 21300000, guid: 23a55cd6c18964e46a682036ee259163, type: 3}
+  - {fileID: 21300000, guid: b73e82472a2a57943a78ea9c6fc5a325, type: 3}
+  - {fileID: 21300000, guid: b721ac289afbf2c4694efe42670cc11f, type: 3}
+  - {fileID: 21300000, guid: 520b2a8949a99174fa855da931604542, type: 3}
+  - {fileID: 21300000, guid: 9c095e2c9e175744ea307c4550ebe9a8, type: 3}
+  - {fileID: 21300000, guid: b4fab87f041abd64089749a1ec153115, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Tower Particle7
+  - Tower Particle8
+  - Tower Particle9
+  - Tower Particle11
+  - Tower Particle3
+  - Tower Particle14
+  - Tower Particle13
+  - Tower Particle5
+  - Tower Particle16
+  - Tower Particle12
+  - Tower Particle15
+  - Tower Particle10
+  - Tower Particle6
+  - Tower Particle2
+  - Tower Particle1
+  - Tower Particle4
+  m_RenderDataMap: {}
+  m_Tag: Tower Particle Sprite Atlas
+  m_IsVariant: 0
