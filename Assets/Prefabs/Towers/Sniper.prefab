@@ -95,3 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bba8236179b0794e8ee22a933c47233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerPlaced: 0
+  range: 10
+  fireRate: 3
+  shotEffect: {fileID: 7622810732044849116, guid: 6a1e33efdaf56df4ba89a5b57ff42f58, type: 3}
+  damage: 4
+  attackRate: 0.1
