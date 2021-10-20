@@ -87,20 +87,34 @@ public class TowerCreator : MonoBehaviour
 
     void Update()
     {
+        Vector3 mousePositionInPixels = Input.mousePosition;
+        Vector3 mousePositionInWorld = mainCamera.ScreenToWorldPoint(mousePositionInPixels);
+
+        int xIndex = Mathf.RoundToInt(mousePositionInWorld.x + buildableArea.Length / 2.0f);
+        int yIndex = Mathf.RoundToInt(mousePositionInWorld.y + buildableArea[0].Array.Length / 2.0f);
+
+        mousePositionInWorld = new Vector3
+        (
+            Mathf.Round(mousePositionInWorld.x),
+            Mathf.Round(mousePositionInWorld.y),
+            mousePositionInWorld.z
+        );
+
         if (beenClicked == true)
         {
-            Vector3 mousePositionInPixels = Input.mousePosition;
-            Vector3 mousePositionInWorld = mainCamera.ScreenToWorldPoint(mousePositionInPixels);
+            if (xIndex >= 1 &&
+                yIndex >= 1 &&
+                xIndex < buildableArea.Length &&
+                yIndex < buildableArea[0].Array.Length &&
+                buildableArea[xIndex].Array[yIndex] &&
+                buildableArea[xIndex - 1].Array[yIndex] &&
+                buildableArea[xIndex - 1].Array[yIndex - 1] &&
+                buildableArea[xIndex].Array[yIndex - 1])
+            {
+                Vector3 clonePosition = new Vector3(mousePositionInWorld.x, mousePositionInWorld.y);
+                clone.transform.position = clonePosition;
+            }
 
-            mousePositionInWorld = new Vector3
-            (
-                Mathf.Round(mousePositionInWorld.x),
-                Mathf.Round(mousePositionInWorld.y),
-                mousePositionInWorld.z
-            );
-
-            Vector3 clonePosition = new Vector3(mousePositionInWorld.x, mousePositionInWorld.y);
-            clone.transform.position = clonePosition;
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 beenClicked = false;
