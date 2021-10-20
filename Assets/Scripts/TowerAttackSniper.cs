@@ -13,6 +13,7 @@ public class TowerAttackSniper : MonoBehaviour
     [SerializeField] float attackRate;
 
     private float time = 0f;
+    private int timesHit = 0;
 
     void Awake()
     {
@@ -49,16 +50,20 @@ public class TowerAttackSniper : MonoBehaviour
                     if (_ClosestDistance < range)
                     {
                         // me trying to make the tower attack rapidly (damage) amount of times so it looks cooler
-                        for (int i = 0; i <= damage; i++)
+                        /*while ()
                         {
-                            if (time > attackRate)
+                            if (time > attackRate + time)
                             {
                                 Destroy(Instantiate(shotEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0))), 3f);
                                 _ClosestEnemy.Health -= 1;
                                 time -= attackRate;
+                                timesHit += 1;
                             }
                         }
-
+                        timesHit = 0;
+                        for now i just use this*/
+                        Destroy(Instantiate(shotEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0))), 3f);
+                        _ClosestEnemy.Health -= damage;
                     }
                 }
                 time -= fireRate;
