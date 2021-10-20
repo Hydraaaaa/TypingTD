@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,12 @@ using UnityEngine.UI;
 
 public class TowerCreator : MonoBehaviour
 {
+    [Serializable]
+    public class BoolArray
+    {
+        public bool[] Array;
+    }
+
     public bool beenClicked = false;
 
     public int CurrentMoney
@@ -17,7 +24,6 @@ public class TowerCreator : MonoBehaviour
         }
     }
 
-
     [SerializeField] GameObject tower;
     [SerializeField] Camera mainCamera;
     [SerializeField] WaveManager waveManager;
@@ -28,9 +34,42 @@ public class TowerCreator : MonoBehaviour
     [SerializeField] int startingMoney = 10;
     [SerializeField] int towerCost = 10;
 
+    [HideInInspector]
+    [SerializeField] BoolArray[] buildableArea;
+
     GameObject clone;
 
     int currentMoney;
+
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
+    {
+        int width = buildableArea.Length;
+        int height = buildableArea[0].Array.Length;
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                float xPos = (x - width / 2.0f) + 0.5f;
+                float yPos = (y - height / 2.0f) + 0.5f;
+
+                Color _Color = Color.red;
+
+                if (buildableArea[x].Array[y])
+                {
+                    _Color = Color.blue;
+                }
+
+                _Color.a = 0.4f;
+
+                Gizmos.color = _Color;
+
+                Gizmos.DrawCube(new Vector3(xPos, yPos, 0), new Vector3(0.5f, 0.5f, 0.01f));
+            }
+        }
+    }
+#endif
 
     void Start()
     {

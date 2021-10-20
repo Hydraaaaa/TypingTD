@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -484,6 +485,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TowerParticles_4: -4972187880497342533
+      TowerParticles_0: 4890338958379717028
+      TowerParticles_6: 1004684214062091772
+      TowerParticles_5: -8186662669711335269
+      TowerParticles_14: -8194594994739355509
+      TowerParticles_8: 923486613982393011
+      TowerParticles_13: -5679344645209872424
+      TowerParticles_7: -6975961050881724718
+      TowerParticles_11: 1289639776871209844
+      TowerParticles_3: -7033523195824907344
+      TowerParticles_10: 4468922236059149200
+      TowerParticles_2: 68574086932768511
+      TowerParticles_12: -3900638402247882965
+      TowerParticles_15: 6683063945104828151
+      TowerParticles_1: -4665362597581642345
+      TowerParticles_9: 9037860953336831789
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
