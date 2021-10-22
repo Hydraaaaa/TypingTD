@@ -99,5 +99,6 @@ MonoBehaviour:
   range: 10
   fireRate: 3
   shotEffect: {fileID: 7622810732044849116, guid: 6a1e33efdaf56df4ba89a5b57ff42f58, type: 3}
-  damage: 4
-  attackRate: 0.1
+  damage: 3
+  clipSize: 0
+  currentClip: 0
