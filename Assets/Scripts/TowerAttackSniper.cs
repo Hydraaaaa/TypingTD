@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerAttackSniper : MonoBehaviour
+public class TowerAttackSniper : Tower
 {
-    public bool TowerPlaced;
-
     [SerializeField] int range;
     [SerializeField] float fireRate;
     [SerializeField] GameObject shotEffect;
@@ -23,11 +21,9 @@ public class TowerAttackSniper : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            TowerPlaced = true;
-        }
-        else if (TowerPlaced == true)
+        CheckIfPlaced();
+
+        if (TowerPlaced == true)
         {
             time += Time.deltaTime;
             if (time > fireRate)

@@ -24,8 +24,8 @@ public class TowerCreator : MonoBehaviour
         }
     }
 
-    [SerializeField] GameObject towerDart;
-    [SerializeField] GameObject towerSniper;
+    [SerializeField] Tower towerDart;
+    [SerializeField] Tower towerSniper;
     [SerializeField] Camera mainCamera;
     [SerializeField] WaveManager waveManager;
     [SerializeField] Text moneyText;
@@ -33,13 +33,11 @@ public class TowerCreator : MonoBehaviour
     [Space]
 
     [SerializeField] int startingMoney = 10;
-    [SerializeField] int towerCostDart = 10;
-    [SerializeField] int towerCostSniper = 15;
 
     [HideInInspector]
     [SerializeField] BoolArray[] buildableArea;
 
-    GameObject clone;
+    Tower clone;
 
     int currentMoney;
 
@@ -122,24 +120,16 @@ public class TowerCreator : MonoBehaviour
         }
     }
 
-    public void MakeTowerDart()
+    public void MakeTower(Tower a_Tower)
     {
-        if (CurrentMoney >= towerCostDart)
+        if (CurrentMoney >= a_Tower.Cost)
         {
             beenClicked = true;
-            clone = Instantiate(towerDart, transform.position, Quaternion.identity);
+            clone = Instantiate(a_Tower, transform.position, Quaternion.identity);
 
-            CurrentMoney -= towerCostDart;
-        }
-    }
-    public void MakeTowerSniper()
-    {
-        if (CurrentMoney >= towerCostSniper)
-        {
-            beenClicked = true;
-            clone = Instantiate(towerSniper, transform.position, Quaternion.identity);
+            CurrentMoney -= a_Tower.Cost;
 
-            CurrentMoney -= towerCostSniper;
+            moneyText.text = CurrentMoney.ToString();
         }
     }
 

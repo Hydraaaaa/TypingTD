@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 41352753}
   - component: {fileID: 41352752}
   - component: {fileID: 41352751}
+  - component: {fileID: 41352754}
   m_Layer: 5
   m_Name: TowerButtonDart
   m_TagString: Untagged
@@ -206,9 +207,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1301231428}
-        m_TargetAssemblyTypeName: TowerCreator, Assembly-CSharp
-        m_MethodName: MakeTowerDart
+      - m_Target: {fileID: 41352754}
+        m_TargetAssemblyTypeName: TowerButton, Assembly-CSharp
+        m_MethodName: MakeTower
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -256,6 +257,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41352749}
   m_CullTransparentMesh: 1
+--- !u!114 &41352754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41352749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aabfd42bb0496c47b8183b56deb93af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TowerCreator: {fileID: 1301231428}
+  m_Tower: {fileID: 6586179401774254047, guid: dbf58508ba045344aa9bc1ff46aec6bb, type: 3}
+  m_Text: {fileID: 43880879}
 --- !u!1 &43880877
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 69
 --- !u!222 &43880880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -671,7 +687,7 @@ RectTransform:
   m_Children:
   - {fileID: 1688848527}
   m_Father: {fileID: 1083029319}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1381,9 +1397,9 @@ RectTransform:
   - {fileID: 182824835}
   - {fileID: 861983695}
   - {fileID: 41352750}
+  - {fileID: 1505834242}
   - {fileID: 1398357699}
   - {fileID: 329321622}
-  - {fileID: 1505834242}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1446,8 +1462,8 @@ MonoBehaviour:
   m_Waves:
   - EnemyGroups:
     - InitialDelay: 0
-      Enemy: {fileID: -6418481162810762875, guid: 30d4902e97e733e4a8e5ab0eb1d864b7, type: 3}
-      Amount: 10
+      Enemy: {fileID: 383645278999364118, guid: 17b34cc0a7923c74a9206d99a8d9bd53, type: 3}
+      Amount: 5
       SpawnInterval: 0.3
     - InitialDelay: 1
       Enemy: {fileID: 7939833986821652190, guid: 980cfd47e1fa90f4dbff0ac22d09dfea, type: 3}
@@ -1539,14 +1555,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beenClicked: 0
-  towerDart: {fileID: 7596293362505108669, guid: dbf58508ba045344aa9bc1ff46aec6bb, type: 3}
-  towerSniper: {fileID: 732562330867299457, guid: 05a7a184b0714e34b8e95a437c150b3d, type: 3}
+  towerDart: {fileID: 6586179401774254047, guid: dbf58508ba045344aa9bc1ff46aec6bb, type: 3}
+  towerSniper: {fileID: 2812701322204327038, guid: 05a7a184b0714e34b8e95a437c150b3d, type: 3}
   mainCamera: {fileID: 519420031}
   waveManager: {fileID: 1076288477}
   moneyText: {fileID: 1398357700}
-  startingMoney: 10
-  towerCostDart: 10
-  towerCostSniper: 15
+  startingMoney: 100
   buildableArea:
   - Array: 010101010101010101010101010100000101
   - Array: 010101010101010101010101010100000101
@@ -1624,7 +1638,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1083029319}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1685,6 +1699,7 @@ GameObject:
   - component: {fileID: 1505834245}
   - component: {fileID: 1505834244}
   - component: {fileID: 1505834243}
+  - component: {fileID: 1505834246}
   m_Layer: 5
   m_Name: TowerButtonSniper
   m_TagString: Untagged
@@ -1705,7 +1720,7 @@ RectTransform:
   m_Children:
   - {fileID: 233873534}
   m_Father: {fileID: 1083029319}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1756,9 +1771,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1301231428}
-        m_TargetAssemblyTypeName: TowerCreator, Assembly-CSharp
-        m_MethodName: MakeTowerSniper
+      - m_Target: {fileID: 1505834246}
+        m_TargetAssemblyTypeName: TowerButton, Assembly-CSharp
+        m_MethodName: MakeTower
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1806,6 +1821,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505834241}
   m_CullTransparentMesh: 1
+--- !u!114 &1505834246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505834241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aabfd42bb0496c47b8183b56deb93af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TowerCreator: {fileID: 1301231428}
+  m_Tower: {fileID: 2812701322204327038, guid: 05a7a184b0714e34b8e95a437c150b3d, type: 3}
+  m_Text: {fileID: 233873535}
 --- !u!1 &1642490642
 GameObject:
   m_ObjectHideFlags: 0
