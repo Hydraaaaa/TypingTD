@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public int Cost;
-    protected bool TowerPlaced;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
+    public int Cost => cost;
 
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] int cost;
 
-    protected void CheckIfPlaced()
+    protected bool TowerPlaced = false;
+
+    public void Initialize()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            TowerPlaced = true;
-        }
+        TowerPlaced = true;
     }
 }

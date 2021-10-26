@@ -39,6 +39,8 @@ public class TowerCreator : MonoBehaviour
 
     Tower clone;
 
+    List<Tower> towers = new List<Tower>();
+
     int currentMoney;
 
 #if UNITY_EDITOR
@@ -100,6 +102,8 @@ public class TowerCreator : MonoBehaviour
 
         if (beenClicked == true)
         {
+            clone.transform.position = new Vector3(mousePositionInWorld.x, mousePositionInWorld.y);
+
             if (xIndex >= 1 &&
                 yIndex >= 1 &&
                 xIndex < buildableArea.Length &&
@@ -109,13 +113,49 @@ public class TowerCreator : MonoBehaviour
                 buildableArea[xIndex - 1].Array[yIndex - 1] &&
                 buildableArea[xIndex].Array[yIndex - 1])
             {
-                Vector3 clonePosition = new Vector3(mousePositionInWorld.x, mousePositionInWorld.y);
-                clone.transform.position = clonePosition;
-            }
+                bool overlappingTower = false;
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+                for (int i = 0; i < towers.Count; i++)
+                {
+                    float xDistance = towers[i].transform.position.x - mousePositionInWorld.x;
+                    float yDistance = towers[i].transform.position.y - mousePositionInWorld.y;
+
+                    if (xDistance <= 1 &&
+                        xDistance >= -1 &&
+                        yDistance <= 1 &&
+                        yDistance >= -1)
+                    {
+                        overlappingTower = true;
+                        break;
+                    }
+                }
+
+                if (!overlappingTower)
+                {
+                    Color color = clone.SpriteRenderer.color;
+                    color.a = 1.0f;
+                    clone.SpriteRenderer.color = color;
+
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        clone.Initialize();
+                        beenClicked = false;
+
+                        towers.Add(clone);
+                    }
+                }
+                else
+                {
+                    Color color = clone.SpriteRenderer.color;
+                    color.a = 0.4f;
+                    clone.SpriteRenderer.color = color;
+                }
+            }
+            else
             {
-                beenClicked = false;
+                Color color = clone.SpriteRenderer.color;
+                color.a = 0.4f;
+                clone.SpriteRenderer.color = color;
             }
         }
     }

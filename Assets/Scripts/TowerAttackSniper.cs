@@ -21,8 +21,6 @@ public class TowerAttackSniper : Tower
 
     void Update()
     {
-        CheckIfPlaced();
-
         if (TowerPlaced == true)
         {
             time += Time.deltaTime;

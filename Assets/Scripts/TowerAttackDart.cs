@@ -18,8 +18,6 @@ public class TowerAttackDart : Tower
 
     void Update()
     {
-        CheckIfPlaced();
-
         if (TowerPlaced == true)
         {
             time += Time.deltaTime;
