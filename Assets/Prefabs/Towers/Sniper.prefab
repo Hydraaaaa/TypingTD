@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7895603835353377172}
-  cost: 15
+  cost: 20
   range: 10
   fireRate: 3
   shotEffect: {fileID: 7622810732044849116, guid: 6a1e33efdaf56df4ba89a5b57ff42f58, type: 3}

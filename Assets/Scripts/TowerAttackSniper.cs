@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class TowerAttackSniper : Tower
 {
+    private IEnumerator Coroutine;
     [SerializeField] int range;
     [SerializeField] float fireRate;
     [SerializeField] GameObject shotEffect;
     [SerializeField] int damage;
-    [SerializeField] float clipSize;
-    [SerializeField] float currentClip;
 
     private float time = 0f;
-    private int timesHit = 0;
 
     void Awake()
     {
@@ -44,8 +42,12 @@ public class TowerAttackSniper : Tower
                     }
                     if (_ClosestDistance < range)
                     {
-                        Destroy(Instantiate(shotEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0))), 3f);
-                        _ClosestEnemy.Health -= damage;
+                        for (int j = 0; j < damage; j++)
+                        {
+                            //Coroutine = WaitForSeconds(0.1f);
+                            Destroy(Instantiate(shotEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0))), 3f);
+                            _ClosestEnemy.Health -= 1;
+                        }
                     }
                 }
                 time -= fireRate;

@@ -342,7 +342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 69
+  m_Text: 0
 --- !u!222 &43880880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -645,7 +645,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 15
+  m_Text: 0
 --- !u!222 &233873536
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -857,12 +857,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 3aa1c3375cca1784ab9a2889767eeb6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26a363407d67817488c5913a3f88cbf6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 128, y: 72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -877,7 +877,7 @@ Transform:
   m_GameObject: {fileID: 336300192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1511,6 +1511,10 @@ MonoBehaviour:
       Enemy: {fileID: 3656454494943571501, guid: e008758a1e40d704d92c26682127ead8, type: 3}
       Amount: 15
       SpawnInterval: 0.85
+    - InitialDelay: 1
+      Enemy: {fileID: 383645278999364118, guid: 17b34cc0a7923c74a9206d99a8d9bd53, type: 3}
+      Amount: 10
+      SpawnInterval: 0.6
 --- !u!4 &1126878999
 Transform:
   m_ObjectHideFlags: 0
@@ -1560,7 +1564,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   waveManager: {fileID: 1076288477}
   moneyText: {fileID: 1398357700}
-  startingMoney: 100
+  startingMoney: 12
   buildableArea:
   - Array: 010101010101010101010101010100000101
   - Array: 010101010101010101010101010100000101
@@ -1678,7 +1682,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: money
 --- !u!222 &1398357701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1913,7 +1917,7 @@ Transform:
   m_GameObject: {fileID: 1642490642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 200, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 1764707312}
   m_RootOrder: 0
@@ -2056,7 +2060,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3aa1c3375cca1784ab9a2889767eeb6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26a363407d67817488c5913a3f88cbf6, type: 3}
   m_MaskAlphaCutoff: 1
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -2075,7 +2079,7 @@ Transform:
   m_GameObject: {fileID: 1764707310}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 1642490644}
   m_Father: {fileID: 0}
