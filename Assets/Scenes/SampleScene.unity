@@ -857,7 +857,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 26a363407d67817488c5913a3f88cbf6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6168e70c7415c9e44bc9a8d0e3e133c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1580,8 +1580,8 @@ MonoBehaviour:
   - Array: 000000000000000001010000010100000101
   - Array: 010100000000000001010000010100000101
   - Array: 010100000000000001010000010100000101
-  - Array: 010100000000000001010000010100000101
-  - Array: 010100000000000001010000010100000101
+  - Array: 010100000000000101010000010100000101
+  - Array: 010100000000000101010000010100000101
   - Array: 010100000000000101010000010100000101
   - Array: 010100000000000101010000010100000101
   - Array: 010100000000000101010000010100000101
@@ -2060,7 +2060,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 26a363407d67817488c5913a3f88cbf6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6168e70c7415c9e44bc9a8d0e3e133c0, type: 3}
   m_MaskAlphaCutoff: 1
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
