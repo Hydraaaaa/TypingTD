@@ -247,10 +247,18 @@ public class Enemy : MonoBehaviour
                 _MatchLength = m_CurrentHealth;
             }
 
+            bool _Once = false;
+
             while (_MatchLength > m_PreviousMatchLength)
             {
-                float _Scale = transform.localScale.x * m_FlinchFactor;
-                transform.localScale = new Vector3(_Scale, _Scale, 1);
+                if (!_Once)
+                {
+                    float _Scale = transform.localScale.x * m_FlinchFactor;
+
+                    transform.localScale = new Vector3(_Scale, _Scale, 1);
+
+                    _Once = true;
+                }
 
                 m_MatchingLetterColors.Add(0.0f);
 
