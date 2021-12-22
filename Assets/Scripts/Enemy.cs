@@ -21,6 +21,12 @@ public class Enemy : MonoBehaviour
         set { SetHealth(value); }
     }
 
+    public float MovementSpeed
+    {
+        get { return m_MovementSpeed; }
+        set { m_MovementSpeed = value; }
+    }
+
     public bool IsTargetable
     {
         get
