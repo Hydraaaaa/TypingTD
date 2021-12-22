@@ -21,8 +21,6 @@ public class Enemy : MonoBehaviour
         set { SetHealth(value); }
     }
 
-    public float MovementSpeedModifier = 1.0f;
-
     public bool IsTargetable
     {
         get
@@ -37,6 +35,8 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+    public float MovementSpeedModifier { get { return m_MovementSpeedModifier; } set { m_MovementSpeedModifier = value; } }
 
     public int KillReward => m_KillReward;
 
@@ -79,6 +79,8 @@ public class Enemy : MonoBehaviour
     int m_PreviousMatchLength;
 
     bool m_IsMoving;
+
+    float m_MovementSpeedModifier = 1.0f;
 
     List<float> m_MatchingLetterColors = new List<float>();
     List<float> m_MissingLetterColors = new List<float>();
