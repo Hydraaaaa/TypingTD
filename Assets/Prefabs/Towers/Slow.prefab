@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d09d4cb90f88094786ff5eeec32ebfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1579868089007598792}
   cost: 25
   range: 4
   fireRate: 0.5
