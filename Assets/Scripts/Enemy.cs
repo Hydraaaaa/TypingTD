@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         set { SetHealth(value); }
     }
 
-    public float MovementSpeedModifier;
+    public float MovementSpeedModifier = 1.0f;
 
     public bool IsTargetable
     {
