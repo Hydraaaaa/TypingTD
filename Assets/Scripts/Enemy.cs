@@ -21,11 +21,7 @@ public class Enemy : MonoBehaviour
         set { SetHealth(value); }
     }
 
-    public float MovementSpeed
-    {
-        get { return m_MovementSpeed; }
-        set { m_MovementSpeed = value; }
-    }
+    public float MovementSpeedModifier;
 
     public bool IsTargetable
     {
@@ -190,7 +186,7 @@ public class Enemy : MonoBehaviour
 
     void Move()
     {
-        float _FrameMovement = m_MovementSpeed * Time.deltaTime;
+        float _FrameMovement = m_MovementSpeed * Time.deltaTime * MovementSpeedModifier;
         float _DistanceToWaypoint = Vector2.Distance(m_CurrentPosition, m_Waypoints[m_CurrentWaypoint].Position);
 
         // While the travel distance would allow the enemy to reach the waypoint
