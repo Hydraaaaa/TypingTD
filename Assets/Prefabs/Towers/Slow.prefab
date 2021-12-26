@@ -101,4 +101,4 @@ MonoBehaviour:
   fireRate: 0.5
   shotEffect: {fileID: 7622810732044849116, guid: 6a1e33efdaf56df4ba89a5b57ff42f58, type: 3}
   damage: 1
-  slow: 1
+  slow: 0.7

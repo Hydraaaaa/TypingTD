@@ -45,7 +45,7 @@ public class TowerAttackSlow : Tower
                     {
                         Destroy(Instantiate(shotEffect, transform.position, Quaternion.Euler(new Vector3(90, 0, 0))), 3f);
                         _ClosestEnemy.Health -= damage;
-                        //_ClosestEnemy.Speed -= slow;
+                        _ClosestEnemy.MovementSpeedModifier = slow;
                     }
                 }
                 time -= fireRate;
