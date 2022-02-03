@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] TextMeshPro m_Text;
     [SerializeField] SpriteRenderer m_Renderer;
     [SerializeField] GameObject m_DeathEffect;
+    [SerializeField] AudioClip[] m_DeathSounds;
     [SerializeField] BoxCollider2D m_WordCollider;
 
     [Space]
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float m_SpacingForce = 0.25f;
     [SerializeField] LayerMask m_SpacingLayerMask;
 
+    AudioSource DeathAudioSource;
     Waypoint[] m_Waypoints;
 
     Vector2 m_CurrentPosition;
@@ -93,6 +95,8 @@ public class Enemy : MonoBehaviour
         }
 
         Enemies.Add(this);
+
+        DeathAudioSource = GetComponent<AudioSource>();
 
         TypingBox.OnWordUpdate += OnWordUpdate;
         TypingBox.OnWordSubmission += OnWordSubmission;
@@ -359,7 +363,9 @@ public class Enemy : MonoBehaviour
     void Kill()
     {
         OnDeath?.Invoke(this);
-
+        
+        AudioClip DeathSound = m_DeathSounds[Random.Range(0, m_DeathSounds.Length)];
+        AudioSource.PlayClipAtPoint(DeathSound, Camera.main.transform.position);
         Instantiate(m_DeathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
